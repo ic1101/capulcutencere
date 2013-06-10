@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Çapulcu Tencere</string>
+    <string name="tencere_cal">İnlet</string>
+    <string name="TencereTabaniDescription">Tencere Tabani</string>
+
+</resources>
