@@ -1,12 +1,8 @@
 package com.example.capulcutencere;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-
-import com.example.capulcutencere.util.SystemUiHider;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,13 +10,14 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.example.capulcutencere.util.SystemUiHider;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
