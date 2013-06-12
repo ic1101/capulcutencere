@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Çapulcu Tencere</string>
-    <string name="tencere_cal">İnlet</string>
     <string name="TencereTabaniDescription">Tencere Tabani</string>
+    <string name="welcomeText">Yanınızda olamıyoruz, cebinizde olalım istedik. Ancak siz de bizi çevrenizdekilerle paylaştıkça duyulacak sesimiz.</string>
 
 </resources>

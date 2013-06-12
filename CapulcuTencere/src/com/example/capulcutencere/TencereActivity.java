@@ -1,5 +1,11 @@
 package com.example.capulcutencere;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
+
 import com.example.capulcutencere.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -7,7 +13,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,10 +28,12 @@ import android.view.View;
  * 
  * @see SystemUiHider
  */
-public class FullscreenActivity extends Activity {
-	private MediaPlayer player;
+public class TencereActivity extends Activity {
+	private SoundPool sample_pool;
+	private List<Integer> sample_ids;
 	private SensorManager mSensorManager;
 	private ShakeEventListener mSensorListener;
+	private Random rand;
 
 	/**
 	 * Whether or not the system UI should be auto-hidden after
@@ -56,10 +66,22 @@ public class FullscreenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_fullscreen);
-
-		player = MediaPlayer.create(this, R.raw.tencere);
-		player.setLooping(true);
+		setContentView(R.layout.activity_tencere);
+		rand = new Random();
+		sample_pool = new SoundPool(50, AudioManager.STREAM_MUSIC, 100);
+		sample_ids = new ArrayList<Integer>();
+		sample_ids.add(sample_pool.load(this, R.raw.sample1, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample2, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample3, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample4, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample5, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample6, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample7, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample8, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample9, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample10, 1));
+		sample_ids.add(sample_pool.load(this, R.raw.sample11, 1));
+		
 		// Set up the sensors.
 		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 		mSensorListener = new ShakeEventListener();
@@ -133,17 +155,22 @@ public class FullscreenActivity extends Activity {
 			}
 		});
 	}
+	
+	private void playRandomSample() {
+		Integer sample = sample_ids.get(rand.nextInt(sample_ids.size()));
 
-	public void makeSound(View view) {
-		makeSound();
+		// Randomize the volume a bit for fun.
+		float volume = 0.8f + 0.2f * rand.nextFloat();
+		int loop = rand.nextInt(3) + 3;
+		float rate = 1.0f + (0.2f * rand.nextFloat() * (rand.nextBoolean() ? -1f : 0f));
+		sample_pool.play(sample, volume, volume, 1, loop, rate);
 	}
-
+	
 	public void makeSound() {
-		if (player.isPlaying()) {
-			player.pause();
-		} else {
-			player.start();
-		}
+		// Pick three random samples and play them.
+		playRandomSample();
+		playRandomSample();
+		playRandomSample();
 	}
 
 	@Override
