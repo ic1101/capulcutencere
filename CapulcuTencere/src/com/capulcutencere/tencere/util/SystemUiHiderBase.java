@@ -1,4 +1,4 @@
-package com.example.capulcutencere.util;
+package com.capulcutencere.tencere.util;
 
 import android.app.Activity;
 import android.view.View;

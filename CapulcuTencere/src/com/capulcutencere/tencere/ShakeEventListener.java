@@ -1,4 +1,4 @@
-package com.example.capulcutencere;
+package com.capulcutencere.tencere;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;

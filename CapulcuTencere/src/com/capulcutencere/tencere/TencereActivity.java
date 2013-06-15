@@ -1,4 +1,4 @@
-package com.example.capulcutencere;
+package com.capulcutencere.tencere;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.capulcutencere.util.SystemUiHider;
+import com.capulcutencere.tencere.util.SystemUiHider;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
